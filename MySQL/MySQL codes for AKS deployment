@@ -1,8 +1,8 @@
-# Step 1: Create Kubernetes Secret
+### Copy each yaml content and paste on AKS > Create > Apply a YAML ###
 
-* mysql-deployment.yaml
+# mysql-deployment.yaml #
 
-```apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
@@ -33,11 +33,12 @@ spec:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: mysql-pv-claim
-```
 
-* mysql-pv.yaml
+#########################################################################################
 
-```apiVersion: v1
+# mysql-pv.yaml #
+
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mysql-pv
@@ -51,11 +52,12 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/mnt/data"
-```
 
-* mysql-pvc.yaml
+#########################################################################################
 
-```apiVersion: v1
+# mysql-pvc.yaml #
+
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
@@ -66,11 +68,12 @@ spec:
   resources:
     requests:
       storage: 5Gi
-```
 
-* mysql-service.yaml
+#########################################################################################
 
-```apiVersion: v1
+# mysql-service.yaml #
+
+apiVersion: v1
 kind: Service
 metadata:
   name: mysql
@@ -80,4 +83,5 @@ spec:
   selector:
     app: mysql
   clusterIP: None
-```
+
+#########################################################################################
